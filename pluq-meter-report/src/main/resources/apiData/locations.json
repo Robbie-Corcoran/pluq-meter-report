@@ -1,0 +1,426 @@
+[
+  {
+    "id": "89358448",
+    "type": "UNKNOWN",
+    "address": "An Address 1",
+    "city": "An example city",
+    "postal_code": "1234AB",
+    "country": "NLD",
+    "name": "Example Location",
+    "coordinates": {
+      "latitude": "41.2123",
+      "longitude": "7.12313"
+    },
+    "charging_when_closed": false,
+    "last_updated": "2023-08-16T12:19:21Z",
+    "evses": [
+      {
+        "uid": "PLUQ1000*1",
+        "evse_id": "TESTPLUQ1000*1",
+        "status": "AVAILABLE",
+        "last_updated": "2023-08-16T12:19:21Z",
+        "capabilities": [
+          "RFID_READER",
+          "REMOTE_START_STOP_CAPABLE",
+          "RESERVABLE"
+        ],
+        "physical_reference": "PLUQ1000",
+        "connectors": [
+          {
+            "id": "1",
+            "standard": "IEC_62196_T2",
+            "format": "SOCKET",
+            "power_type": "AC_3_PHASE",
+            "voltage": 230,
+            "amperage": 32,
+            "last_updated": "2023-08-16T12:19:21Z",
+            "tariff_id": "198521990"
+          }
+        ]
+      },
+      {
+        "uid": "PLUQ1000*2",
+        "evse_id": "TESTPLUQ1000*2",
+        "status": "AVAILABLE",
+        "last_updated": "2023-08-15T19:33:04Z",
+        "capabilities": [
+          "RFID_READER",
+          "REMOTE_START_STOP_CAPABLE",
+          "RESERVABLE"
+        ],
+        "physical_reference": "PLUQ1000",
+        "connectors": [
+          {
+            "id": "2",
+            "standard": "IEC_62196_T2",
+            "format": "SOCKET",
+            "power_type": "AC_3_PHASE",
+            "voltage": 230,
+            "amperage": 32,
+            "last_updated": "2023-08-15T19:33:04Z",
+            "tariff_id": "198521990"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "89311424",
+    "name": "Last Light Inn",
+    "type": "PARKING_LOT",
+    "address": "Street of light",
+    "city": "Baldurs gate",
+    "postal_code": "2345BC",
+    "country": "Faerûn",
+    "coordinates": {
+      "latitude": "49.492582",
+      "longitude": "9.108199"
+    },
+    "last_updated": "2023-08-06T20:32:39Z",
+    "evses": [
+      {
+        "uid": "PLUQ1002*1",
+        "evse_id": "TESTPLUQ1002*1",
+        "status": "AVAILABLE",
+        "last_updated": "2023-08-04T20:48:57Z",
+        "capabilities": [
+          "RFID_READER",
+          "REMOTE_START_STOP_CAPABLE",
+          "RESERVABLE"
+        ],
+        "physical_reference": "PLUQ1002",
+        "connectors": [
+          {
+            "id": "1",
+            "standard": "IEC_62196_T2",
+            "format": "SOCKET",
+            "power_type": "AC_3_PHASE",
+            "voltage": 230,
+            "amperage": 32,
+            "last_updated": "2023-08-04T20:48:57Z",
+            "tariff_id": "193225183"
+          }
+        ]
+      },
+      {
+        "uid": "PLUQ1002*2",
+        "evse_id": "TESTPLUQ1002*2",
+        "status": "AVAILABLE",
+        "last_updated": "2023-08-05T16:30:02Z",
+        "capabilities": [
+          "RFID_READER",
+          "REMOTE_START_STOP_CAPABLE",
+          "RESERVABLE"
+        ],
+        "physical_reference": "PLUQ1002",
+        "connectors": [
+          {
+            "id": "2",
+            "standard": "IEC_62196_T2",
+            "format": "SOCKET",
+            "power_type": "AC_3_PHASE",
+            "voltage": 230,
+            "amperage": 32,
+            "last_updated": "2023-08-05T16:30:02Z",
+            "tariff_id": "193225183"
+          }
+        ]
+      },
+      {
+        "uid": "PLUQ1001*2",
+        "evse_id": "TESTPLUQ1001*2",
+        "status": "AVAILABLE",
+        "last_updated": "2023-08-06T20:32:39Z",
+        "capabilities": [
+          "RFID_READER",
+          "REMOTE_START_STOP_CAPABLE",
+          "RESERVABLE"
+        ],
+        "physical_reference": "PLUQ1001",
+        "connectors": [
+          {
+            "id": "2",
+            "standard": "IEC_62196_T2",
+            "format": "SOCKET",
+            "power_type": "AC_3_PHASE",
+            "voltage": 230,
+            "amperage": 32,
+            "last_updated": "2023-08-06T20:32:39Z",
+            "tariff_id": "193225183"
+          }
+        ]
+      },
+      {
+        "uid": "PLUQ1001*1",
+        "evse_id": "TESTPLUQ1001*1",
+        "status": "AVAILABLE",
+        "last_updated": "2023-08-04T18:06:22Z",
+        "capabilities": [
+          "RFID_READER",
+          "REMOTE_START_STOP_CAPABLE",
+          "RESERVABLE"
+        ],
+        "physical_reference": "PLUQ1001",
+        "connectors": [
+          {
+            "id": "1",
+            "standard": "IEC_62196_T2",
+            "format": "SOCKET",
+            "power_type": "AC_3_PHASE",
+            "voltage": 230,
+            "amperage": 32,
+            "last_updated": "2023-08-04T18:06:22Z",
+            "tariff_id": "193225183"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "89166890",
+    "type": "ON_STREET",
+    "address": "742 Evergreen Terrace",
+    "city": "Springfield",
+    "postal_code": "3456CD",
+    "country": "NLD",
+    "coordinates": {
+      "latitude": "59.562086",
+      "longitude": "1.080652"
+    },
+    "charging_when_closed": false,
+    "name": "The Simpsons House",
+    "last_updated": "2023-01-30T14:33:42Z",
+    "evses": [
+      {
+        "uid": "PLUQ1003*2",
+        "evse_id": "TESTPLUQ1003*2",
+        "status": "UNKNOWN",
+        "last_updated": "2022-09-22T22:00:01Z",
+        "capabilities": [
+          "RFID_READER",
+          "REMOTE_START_STOP_CAPABLE",
+          "RESERVABLE"
+        ],
+        "physical_reference": "PLUQ1003 R",
+        "connectors": [
+          {
+            "id": "2",
+            "standard": "IEC_62196_T2",
+            "format": "SOCKET",
+            "power_type": "AC_3_PHASE",
+            "voltage": 230,
+            "amperage": 32,
+            "last_updated": "2022-09-22T22:00:01Z",
+            "tariff_id": "198521926"
+          }
+        ]
+      },
+      {
+        "uid": "PLUQ1003*1",
+        "evse_id": "TESTPLUQ1003*1",
+        "status": "UNKNOWN",
+        "last_updated": "2022-09-22T22:00:01Z",
+        "capabilities": [
+          "RFID_READER",
+          "REMOTE_START_STOP_CAPABLE",
+          "RESERVABLE"
+        ],
+        "physical_reference": "PLUQ1003 L",
+        "connectors": [
+          {
+            "id": "1",
+            "standard": "IEC_62196_T2",
+            "format": "SOCKET",
+            "power_type": "AC_3_PHASE",
+            "voltage": 230,
+            "amperage": 32,
+            "last_updated": "2022-09-22T22:00:01Z",
+            "tariff_id": "198521926"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "89309756",
+    "type": "PARKING_LOT",
+    "address": "Near Blackwater Bay",
+    "city": "King's Landing",
+    "postal_code": "2345KA",
+    "country": "NLD",
+    "coordinates": {
+      "latitude": "59.251747",
+      "longitude": "6.4561142"
+    },
+    "charging_when_closed": false,
+    "name": "Red Keep",
+    "opening_times": {
+      "twentyfourseven": true
+    },
+    "last_updated": "2023-08-16T18:10:35Z",
+    "evses": [
+      {
+        "uid": "PLUQ1004*1",
+        "evse_id": "TESTPLUQ1004*1",
+        "status": "AVAILABLE",
+        "last_updated": "2023-08-16T18:06:17Z",
+        "capabilities": [
+          "RFID_READER",
+          "REMOTE_START_STOP_CAPABLE",
+          "RESERVABLE"
+        ],
+        "physical_reference": "PLUQ1004",
+        "connectors": [
+          {
+            "id": "1",
+            "standard": "IEC_62196_T2",
+            "format": "SOCKET",
+            "power_type": "AC_3_PHASE",
+            "voltage": 230,
+            "amperage": 32,
+            "last_updated": "2023-08-16T18:06:17Z",
+            "tariff_id": "198522068"
+          }
+        ]
+      },
+      {
+        "uid": "PLUQ1004*2",
+        "evse_id": "TESTPLUQ1004*2",
+        "status": "AVAILABLE",
+        "last_updated": "2023-08-16T17:17:18Z",
+        "capabilities": [
+          "RFID_READER",
+          "REMOTE_START_STOP_CAPABLE",
+          "RESERVABLE"
+        ],
+        "physical_reference": "PLUQ1004",
+        "connectors": [
+          {
+            "id": "2",
+            "standard": "IEC_62196_T2",
+            "format": "SOCKET",
+            "power_type": "AC_3_PHASE",
+            "voltage": 230,
+            "amperage": 32,
+            "last_updated": "2023-08-16T17:17:18Z",
+            "tariff_id": "198522068"
+          }
+        ]
+      },
+      {
+        "uid": "PLUQ1005*1",
+        "evse_id": "TESTPLUQ1005*1",
+        "status": "AVAILABLE",
+        "last_updated": "2023-08-16T16:26:20Z",
+        "capabilities": [
+          "RFID_READER",
+          "REMOTE_START_STOP_CAPABLE",
+          "RESERVABLE"
+        ],
+        "physical_reference": "PLUQ1005",
+        "connectors": [
+          {
+            "id": "1",
+            "standard": "IEC_62196_T2",
+            "format": "SOCKET",
+            "power_type": "AC_3_PHASE",
+            "voltage": 230,
+            "amperage": 32,
+            "last_updated": "2023-08-16T16:26:20Z",
+            "tariff_id": "198522068"
+          }
+        ]
+      },
+      {
+        "uid": "PLUQ1005*2",
+        "evse_id": "TESTPLUQ1005*2",
+        "status": "AVAILABLE",
+        "last_updated": "2023-08-16T18:10:35Z",
+        "capabilities": [
+          "RFID_READER",
+          "REMOTE_START_STOP_CAPABLE",
+          "RESERVABLE"
+        ],
+        "physical_reference": "PLUQ1005",
+        "connectors": [
+          {
+            "id": "2",
+            "standard": "IEC_62196_T2",
+            "format": "SOCKET",
+            "power_type": "AC_3_PHASE",
+            "voltage": 230,
+            "amperage": 32,
+            "last_updated": "2023-08-16T18:10:35Z",
+            "tariff_id": "198522068"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "89320273",
+    "type": "PARKING_LOT",
+    "address": "On top of a hill",
+    "city": "Dressrosa",
+    "postal_code": "0129 OP",
+    "country": "NLD",
+    "coordinates": {
+      "latitude": "61.102473",
+      "longitude": "11.268348"
+    },
+    "charging_when_closed": false,
+    "time_zone": "Europe/Amsterdam",
+    "name": "Flower Hill",
+    "last_updated": "2023-08-16T19:31:05Z",
+    "evses": [
+      {
+        "uid": "PLUQ1006*2",
+        "evse_id": "TESTPLUQ1006*2",
+        "status": "CHARGING",
+        "last_updated": "2023-08-16T09:45:10Z",
+        "capabilities": [
+          "RFID_READER",
+          "REMOTE_START_STOP_CAPABLE",
+          "RESERVABLE"
+        ],
+        "physical_reference": "PLUQ1006",
+        "connectors": [
+          {
+            "id": "2",
+            "standard": "IEC_62196_T2",
+            "format": "SOCKET",
+            "power_type": "AC_3_PHASE",
+            "voltage": 230,
+            "amperage": 32,
+            "last_updated": "2023-08-16T09:45:10Z",
+            "tariff_id": "193225183"
+          }
+        ]
+      },
+      {
+        "uid": "PLUQ1006*1",
+        "evse_id": "TESTPLUQ1006*1",
+        "status": "AVAILABLE",
+        "last_updated": "2023-08-16T19:31:05Z",
+        "capabilities": [
+          "RFID_READER",
+          "REMOTE_START_STOP_CAPABLE",
+          "RESERVABLE"
+        ],
+        "physical_reference": "PLUQ1006",
+        "connectors": [
+          {
+            "id": "1",
+            "standard": "IEC_62196_T2",
+            "format": "SOCKET",
+            "power_type": "AC_3_PHASE",
+            "voltage": 230,
+            "amperage": 32,
+            "last_updated": "2023-08-16T19:31:05Z",
+            "tariff_id": "193225183"
+          }
+        ]
+      }
+    ]
+  }
+]
