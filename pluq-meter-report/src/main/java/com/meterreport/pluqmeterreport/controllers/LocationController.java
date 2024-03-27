@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/location")
@@ -17,9 +18,14 @@ public class LocationController {
         this.locationService = locationService;
     }
 
+    @GetMapping("/all")
+    public List<Location> getAllLocations() {
+        return locationService.getAllLocations();
+    }
+
     @GetMapping
-    public List<Location> getAll() {
-        return locationService.getAll();
+    public Optional<Location> getLocationById(@RequestParam String locationId){
+        return locationService.getLocationById(locationId);
     }
 
     @PostMapping
@@ -33,7 +39,7 @@ public class LocationController {
     }
 
     @DeleteMapping
-    public void deleteLocation(String locationId) {
+    public void deleteLocation(@RequestParam String locationId) {
         locationService.delete(locationId);
     }
 
