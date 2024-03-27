@@ -33,8 +33,8 @@ public class LocationController {
         return locationService.saveLocation(location);
     }
 
-    @PostMapping("/multiple")
-    public List<Location> createMultipleLocations(@RequestBody List<Location> locationsList){
+    @PostMapping("/list")
+    public List<Location> createLocationsList(@RequestBody List<Location> locationsList){
         return locationService.saveMultipleLocations(locationsList);
     }
 
