@@ -1,4 +1,4 @@
-package com.meterreport.pluqmeterreport.models;
+package com.meterreport.pluqmeterreport.models.location;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
