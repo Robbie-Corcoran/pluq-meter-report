@@ -40,20 +40,20 @@ public class LocationService {
     }
 
     public Location saveLocation(Location location) throws LocationAlreadyExistsException {
-        if(locationRepository.findById(location.getId()).isPresent()) {
+        if (locationRepository.findById(location.getId()).isPresent()) {
             throw new LocationAlreadyExistsException("Location already exists with id: " + location.getId());
         }
 
         return locationRepository.save(location);
     }
 
-//    TODO: Finish exception handling for this method.
+    //    TODO: Finish exception handling for this method.
     public List<Location> saveLocationsList(List<Location> locationsList) {
         return locationRepository.saveAll(locationsList);
     }
 
     public void delete(String locationId) throws LocationNotFoundException {
-        if(locationRepository.findById(locationId).isEmpty()) {
+        if (locationRepository.findById(locationId).isEmpty()) {
             throw new LocationNotFoundException("Location not found by locationId: " + locationId);
         }
         locationRepository.deleteById(locationId);

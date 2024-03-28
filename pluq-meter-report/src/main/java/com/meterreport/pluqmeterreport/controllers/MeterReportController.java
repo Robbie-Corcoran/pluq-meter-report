@@ -17,7 +17,7 @@ public class MeterReportController {
     }
 
     @GetMapping
-    public MeterReport generateMeterReport(){
+    public MeterReport generateMeterReport() {
         return meterReportService.generateMeterReport();
     }
 }
