@@ -1,9 +1,9 @@
 package com.meterreport.pluqmeterreport.models.location;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.bson.codecs.pojo.annotations.BsonProperty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -21,13 +21,13 @@ public class Location {
     private String type;
     private String address;
     private String city;
-    @BsonProperty(value = "postal_code")
+    @JsonProperty(value = "postal_code")
     private String postalCode;
     private String country;
     private Coordinates coordinates;
-    @BsonProperty(value = "charging_when_closed")
+    @JsonProperty(value = "charging_when_closed")
     private boolean chargingWhenClosed;
-    @BsonProperty(value = "last_updated")
+    @JsonProperty(value = "last_updated")
     private String lastUpdated;
     private List<Evse> evses;
 
