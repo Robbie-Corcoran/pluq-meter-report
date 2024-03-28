@@ -28,6 +28,6 @@ public class MeterValueController {
 
     @GetMapping("/all")
     public List<MeterValue> getAllMeterValues() {
-        return meterValueService.getAllMeterValues(meterValueService);
+        return meterValueService.getAllMeterValues();
     }
 }

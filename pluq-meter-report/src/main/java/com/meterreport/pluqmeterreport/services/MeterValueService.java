@@ -1,7 +1,6 @@
 package com.meterreport.pluqmeterreport.services;
 
 import com.meterreport.pluqmeterreport.models.MeterValue;
-import com.meterreport.pluqmeterreport.models.location.Evse;
 import com.meterreport.pluqmeterreport.repos.MeterValueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,7 +26,7 @@ public class MeterValueService {
         return meterValueRepository.findById(meterValueId);
     }
 
-    public List<MeterValue> getAllMeterValues(MeterValueService meterValueService) {
+    public List<MeterValue> getAllMeterValues() {
         return meterValueRepository.findAll();
     }
 
