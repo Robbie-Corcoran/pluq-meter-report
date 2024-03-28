@@ -26,7 +26,7 @@ public class LocationService {
         return locationRepository.save(location);
     }
 
-    public List<Location> saveMultipleLocations(List<Location> locationsList) {
+    public List<Location> saveLocationsList(List<Location> locationsList) {
         return locationRepository.saveAll(locationsList);
     }
 
