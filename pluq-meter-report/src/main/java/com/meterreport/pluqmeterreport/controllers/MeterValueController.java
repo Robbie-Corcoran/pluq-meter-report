@@ -20,7 +20,7 @@ public class MeterValueController {
     }
 
     @GetMapping
-    public Optional<MeterValue> getMeterValueById(String meterValueId) {
+    public Optional<MeterValue> getMeterValueById(@RequestParam String meterValueId) {
         return meterValueService.getMeterValueById(meterValueId);
     }
 
@@ -30,12 +30,12 @@ public class MeterValueController {
     }
 
     @PostMapping
-    public MeterValue createMeterValue(MeterValue meterValue){
+    public MeterValue createMeterValue(@RequestBody MeterValue meterValue){
         return meterValueService.saveMeterValue(meterValue);
     }
 
     @PostMapping("/list")
-    public List<MeterValue> createMeterValueList(List<MeterValue> meterValueList){
+    public List<MeterValue> createMeterValueList(@RequestBody List<MeterValue> meterValueList){
         return  meterValueService.saveMeterValueList(meterValueList);
     }
 
