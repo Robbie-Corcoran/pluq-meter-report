@@ -1,5 +1,6 @@
 package com.meterreport.pluqmeterreport.services;
 
+import com.meterreport.pluqmeterreport.errors.customErrors.LocationNotFoundException;
 import com.meterreport.pluqmeterreport.models.location.Location;
 import com.meterreport.pluqmeterreport.repos.LocationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +19,23 @@ public class LocationService {
         this.locationRepository = locationRepository;
     }
 
+    public Optional<Location> getLocationById(String locationId) throws LocationNotFoundException {
+        Optional<Location> location = locationRepository.findById(locationId);
+
+        if (location.isEmpty()) {
+            throw new LocationNotFoundException("Location not found by that locationId.");
+        }
+        return location;
+    }
+
     public List<Location> getAllLocations() {
-        return locationRepository.findAll();
+        List<Location> locationList = locationRepository.findAll();
+
+        if (locationList.isEmpty()) {
+            throw new LocationNotFoundException("Location list not found.");
+        }
+
+        return locationList;
     }
 
     public Location saveLocation(Location location) {
@@ -36,9 +52,5 @@ public class LocationService {
 
     public void deleteAllLocations() {
         locationRepository.deleteAll();
-    }
-
-    public Optional<Location> getLocationById(String locationId) {
-        return locationRepository.findById(locationId);
     }
 }

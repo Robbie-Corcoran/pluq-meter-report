@@ -1,8 +1,10 @@
 package com.meterreport.pluqmeterreport.controllers;
 
+import com.meterreport.pluqmeterreport.errors.customErrors.LocationNotFoundException;
 import com.meterreport.pluqmeterreport.models.location.Location;
 import com.meterreport.pluqmeterreport.services.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,14 +20,23 @@ public class LocationController {
         this.locationService = locationService;
     }
 
-    @GetMapping("/all")
-    public List<Location> getAllLocations() {
-        return locationService.getAllLocations();
-    }
 
     @GetMapping
-    public Optional<Location> getLocationById(@RequestParam String locationId){
-        return locationService.getLocationById(locationId);
+    public ResponseEntity<Optional<Location>> getLocationById(@RequestParam String locationId){
+        try {
+            return ResponseEntity.ok(locationService.getLocationById(locationId));
+        } catch (LocationNotFoundException ex) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<Location>> getAllLocations() {
+        try {
+            return ResponseEntity.of(Optional.ofNullable(locationService.getAllLocations()));
+        } catch (LocationNotFoundException ex){
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PostMapping
