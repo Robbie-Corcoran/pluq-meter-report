@@ -24,7 +24,7 @@ public class LocationService {
         Optional<Location> location = locationRepository.findById(locationId);
 
         if (location.isEmpty()) {
-            throw new LocationNotFoundException("Location not found by that locationId.");
+            throw new LocationNotFoundException("Location not found by locationId: " + locationId);
         }
         return location;
     }
@@ -33,7 +33,7 @@ public class LocationService {
         List<Location> locationList = locationRepository.findAll();
 
         if (locationList.isEmpty()) {
-            throw new LocationNotFoundException("Location list not found.");
+            throw new LocationNotFoundException("Could not find any saved locations.");
         }
 
         return locationList;
@@ -54,7 +54,7 @@ public class LocationService {
 
     public void delete(String locationId) throws LocationNotFoundException {
         if(locationRepository.findById(locationId).isEmpty()) {
-            throw new LocationNotFoundException("Could not find location by id: " + locationId);
+            throw new LocationNotFoundException("Location not found by locationId: " + locationId);
         }
         locationRepository.deleteById(locationId);
     }
