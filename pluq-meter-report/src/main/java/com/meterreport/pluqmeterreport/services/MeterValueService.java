@@ -18,9 +18,6 @@ public class MeterValueService {
         this.meterValueRepository = meterValueRepository;
     }
 
-    public MeterValue saveMeterValue(MeterValue meterValue) {
-        return meterValueRepository.save(meterValue);
-    }
 
     public Optional<MeterValue> getMeterValueById(String meterValueId) {
         return meterValueRepository.findById(meterValueId);
@@ -30,5 +27,19 @@ public class MeterValueService {
         return meterValueRepository.findAll();
     }
 
+    public MeterValue saveMeterValue(MeterValue meterValue) {
+        return meterValueRepository.save(meterValue);
+    }
 
+    public List<MeterValue> saveMeterValueList(List<MeterValue> meterValueList) {
+        return meterValueRepository.saveAll(meterValueList);
+    }
+
+    public void deleteMeterValue(String meterValueId) {
+        meterValueRepository.deleteById(meterValueId);
+    }
+
+    public void deleteAllMeterValues() {
+        meterValueRepository.deleteAll();
+    }
 }

@@ -3,9 +3,7 @@ package com.meterreport.pluqmeterreport.controllers;
 import com.meterreport.pluqmeterreport.models.MeterValue;
 import com.meterreport.pluqmeterreport.services.MeterValueService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -29,5 +27,25 @@ public class MeterValueController {
     @GetMapping("/all")
     public List<MeterValue> getAllMeterValues() {
         return meterValueService.getAllMeterValues();
+    }
+
+    @PostMapping
+    public MeterValue createMeterValue(MeterValue meterValue){
+        return meterValueService.saveMeterValue(meterValue);
+    }
+
+    @PostMapping("/list")
+    public List<MeterValue> createMeterValueList(List<MeterValue> meterValueList){
+        return  meterValueService.saveMeterValueList(meterValueList);
+    }
+
+    @DeleteMapping
+    public void deleteMeterValue(@RequestParam String meterValueId) {
+        meterValueService.deleteMeterValue(meterValueId);
+    }
+
+    @DeleteMapping("/all")
+    public void deleteAllMeterValues() {
+        meterValueService.deleteAllMeterValues();
     }
 }
