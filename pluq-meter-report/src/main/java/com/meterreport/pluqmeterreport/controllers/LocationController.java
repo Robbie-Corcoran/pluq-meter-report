@@ -35,7 +35,7 @@ public class LocationController {
 
     @PostMapping("/list")
     public List<Location> createLocationsList(@RequestBody List<Location> locationsList){
-        return locationService.saveMultipleLocations(locationsList);
+        return locationService.saveLocationsList(locationsList);
     }
 
     @DeleteMapping
