@@ -28,14 +28,19 @@ public class MeterReportService {
     public MeterReport generateMeterReportByLocationId(String locationId) {
         MeterReport meterReport = new MeterReport();
         Location location = locationService.getLocationById(locationId);
+        List<Evse> evseList = location.getEvses();
+
 //            Name
             meterReport.setLocationName(location.getName());
 
 //            Address
             meterReport.setLocationAddress(location.getAddress());
 
+//            Number of charging sockets
+            meterReport.setNumberOfChargingSockets(evseList.size());
+
 //            Total kWh charged
-            double totalKWhCharged = calculateTotalKWhCharged(location);
+            double totalKWhCharged = calculateTotalKWhCharged(evseList);
             meterReport.setTotalKWhCharged(totalKWhCharged);
 
 //            Number of charging sessions
@@ -43,7 +48,7 @@ public class MeterReportService {
             meterReport.setNumberOfChargingSessions(numberOfChargingSessions);
 
 //            Average kWh per socket
-            double kWhPerSocket = totalKWhCharged / location.getEvses().size();
+            double kWhPerSocket = totalKWhCharged / evseList.size();
             meterReport.setAverageKWhPerSocket(kWhPerSocket);
 
 //            Average kWh per session
@@ -57,10 +62,10 @@ public class MeterReportService {
         return meterReport;
     }
 
-    private double calculateTotalKWhCharged(Location location) {
+    private double calculateTotalKWhCharged(List<Evse> evseList) {
         double totalKwhCharged = 0;
 
-        for (Evse evse : location.getEvses()) {
+        for (Evse evse : evseList) {
             List<MeterValue> meterValues = meterValueService.getMeterValuesByPhysicalReference(evse.getUid());
             for (MeterValue meterValue : meterValues) {
                 totalKwhCharged += meterValue.getMeterValue();

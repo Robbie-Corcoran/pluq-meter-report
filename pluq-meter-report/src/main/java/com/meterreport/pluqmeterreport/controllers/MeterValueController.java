@@ -48,4 +48,11 @@ public class MeterValueController {
     public void deleteAllMeterValues() {
         meterValueService.deleteAllMeterValues();
     }
+
+
+//    Test
+    @GetMapping("/test")
+    public List<MeterValue> test(String uid){
+        return meterValueService.getMeterValuesByPhysicalReference(uid);
+    }
 }

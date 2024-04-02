@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface MeterValueRepository extends MongoRepository<MeterValue, String> {
-    List<MeterValue> findAllByPhysicalReference(String uid);
+    List<MeterValue> findAllByPhysicalReference(String physicalReference);
 }

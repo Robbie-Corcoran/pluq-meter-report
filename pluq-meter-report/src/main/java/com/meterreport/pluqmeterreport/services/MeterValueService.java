@@ -2,6 +2,7 @@ package com.meterreport.pluqmeterreport.services;
 
 import com.meterreport.pluqmeterreport.models.MeterValue;
 import com.meterreport.pluqmeterreport.repos.MeterValueRepository;
+import com.meterreport.pluqmeterreport.repos.MeterValueRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,7 +44,7 @@ public class MeterValueService {
         meterValueRepository.deleteAll();
     }
 
-    public List<MeterValue> getMeterValuesByPhysicalReference(String uid) {
-        return meterValueRepository.findAllByPhysicalReference(uid);
+    public List<MeterValue> getMeterValuesByPhysicalReference(String physicalReference) {
+        return meterValueRepository.findAllByPhysicalReference(physicalReference);
     }
 }
