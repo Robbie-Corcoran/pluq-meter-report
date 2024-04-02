@@ -24,7 +24,7 @@ public class LocationController {
     }
 
     @GetMapping
-    public Optional<Location> getLocationById(@RequestParam String locationId){
+    public Location getLocationById(@RequestParam String locationId){
         return locationService.getLocationById(locationId);
     }
 

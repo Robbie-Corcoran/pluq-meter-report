@@ -38,7 +38,7 @@ public class LocationService {
         locationRepository.deleteAll();
     }
 
-    public Optional<Location> getLocationById(String locationId) {
-        return locationRepository.findById(locationId);
+    public Location getLocationById(String locationId) {
+        return locationRepository.getLocationById(locationId);
     }
 }

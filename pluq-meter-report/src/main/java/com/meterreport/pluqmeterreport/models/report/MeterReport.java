@@ -13,11 +13,9 @@ public class MeterReport {
 
     private String locationName;
     private String locationAddress;
-    private List<EvseInfo> evse;
     private double totalKWhCharged;
     private int numberOfChargingSessions;
+    private double averageKWhPerSocket;
     private double averageKWhPerSession;
-    private List<EnergyPriceInfo> energyPrices;
-    private double totalTransactionalCost;
-    private double averageCostPerKWh;
+    private double averageKWhPerDayPerSocket;
 }
