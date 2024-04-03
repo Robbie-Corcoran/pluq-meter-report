@@ -33,6 +33,19 @@ public class MeterReportService {
 
 //    TODO: Implement report generation logic
 
+    public List<MeterReport> generateMeterReportForAllLocations(){
+        List<MeterReport> meterReportList = new ArrayList<MeterReport>();
+        List<Location> locationList = locationService.getAllLocations();
+
+        for(Location location : locationList) {
+            MeterReport meterReport = new MeterReport();
+            meterReport = generateMeterReportByLocationId(location.getId());
+            meterReportList.add(meterReport);
+        }
+
+        return meterReportList;
+    }
+
     public MeterReport generateMeterReportByLocationId(String locationId) {
         MeterReport meterReport = new MeterReport();
         DecimalFormat df = new DecimalFormat("#.##");
