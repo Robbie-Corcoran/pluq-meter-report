@@ -33,13 +33,12 @@ public class MeterReportService {
 
 //    TODO: Implement report generation logic
 
-    public List<MeterReport> generateMeterReportForAllLocations(){
-        List<MeterReport> meterReportList = new ArrayList<MeterReport>();
+    public List<MeterReport> generateMeterReportForAllLocations() {
+        List<MeterReport> meterReportList = new ArrayList<>();
         List<Location> locationList = locationService.getAllLocations();
 
-        for(Location location : locationList) {
-            MeterReport meterReport = new MeterReport();
-            meterReport = generateMeterReportByLocationId(location.getId());
+        for (Location location : locationList) {
+            MeterReport meterReport = generateMeterReportByLocationId(location.getId());
             meterReportList.add(meterReport);
         }
 
