@@ -51,8 +51,8 @@ public class MeterValueController {
 
 
     //    Test
-    @GetMapping("/test")
-    public List<MeterValue> test(String uid) {
-        return meterValueService.getMeterValuesByPhysicalReference(uid);
-    }
+//    @GetMapping("/test")
+//    public List<MeterValue> test(String uid) {
+//        return meterValueService.getMeterValuesByPhysicalReference(uid);
+//    }
 }

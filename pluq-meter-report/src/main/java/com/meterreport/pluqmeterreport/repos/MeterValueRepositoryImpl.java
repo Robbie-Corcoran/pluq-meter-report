@@ -18,7 +18,7 @@ public abstract class MeterValueRepositoryImpl implements MeterValueRepository {
     @Override
     public List<MeterValue> findAllByPhysicalReference(String physicalReference) {
         Query query = new Query();
-        query.addCriteria(Criteria.where("physicalReference").is(physicalReference));
+        query.addCriteria(Criteria.where("physicalReference").is(physicalReference.substring(0, physicalReference.length() - 2)));
         return mongoTemplate.find(query, MeterValue.class);
     }
 }
