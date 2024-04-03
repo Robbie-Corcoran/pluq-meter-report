@@ -45,6 +45,7 @@ public class MeterValueService {
     }
 
     public List<MeterValue> getMeterValuesByPhysicalReference(String physicalReference) {
+//        TODO: Refactor the response from the repo method.
         return meterValueRepository.findAllByPhysicalReference(physicalReference);
     }
 }
