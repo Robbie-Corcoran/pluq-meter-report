@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/location")
@@ -14,7 +13,7 @@ public class LocationController {
     private final LocationService locationService;
 
     @Autowired
-    public LocationController(LocationService locationService){
+    public LocationController(LocationService locationService) {
         this.locationService = locationService;
     }
 
@@ -24,7 +23,7 @@ public class LocationController {
     }
 
     @GetMapping
-    public Location getLocationById(@RequestParam String locationId){
+    public Location getLocationById(@RequestParam String locationId) {
         return locationService.getLocationById(locationId);
     }
 
@@ -34,7 +33,7 @@ public class LocationController {
     }
 
     @PostMapping("/list")
-    public List<Location> createLocationsList(@RequestBody List<Location> locationsList){
+    public List<Location> createLocationsList(@RequestBody List<Location> locationsList) {
         return locationService.saveLocationsList(locationsList);
     }
 

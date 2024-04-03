@@ -2,7 +2,6 @@ package com.meterreport.pluqmeterreport.services;
 
 import com.meterreport.pluqmeterreport.models.MeterValue;
 import com.meterreport.pluqmeterreport.repos.MeterValueRepository;
-import com.meterreport.pluqmeterreport.repos.MeterValueRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

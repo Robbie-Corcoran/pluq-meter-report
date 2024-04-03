@@ -31,33 +31,33 @@ public class MeterReportService {
         List<Evse> evseList = location.getEvses();
 
 //            Name
-            meterReport.setLocationName(location.getName());
+        meterReport.setLocationName(location.getName());
 
 //            Address
-            meterReport.setLocationAddress(location.getAddress());
+        meterReport.setLocationAddress(location.getAddress());
 
 //            Number of charging sockets
-            meterReport.setNumberOfChargingSockets(evseList.size());
+        meterReport.setNumberOfChargingSockets(evseList.size());
 
 //            Total kWh charged
-            double totalKWhCharged = calculateTotalKWhCharged(evseList);
-            meterReport.setTotalKWhCharged(totalKWhCharged);
+        double totalKWhCharged = calculateTotalKWhCharged(evseList);
+        meterReport.setTotalKWhCharged(totalKWhCharged);
 
 //            Number of charging sessions
-            int numberOfChargingSessions = calculateNumberOfChargingSessions(location);
-            meterReport.setNumberOfChargingSessions(numberOfChargingSessions);
+        int numberOfChargingSessions = calculateNumberOfChargingSessions(location);
+        meterReport.setNumberOfChargingSessions(numberOfChargingSessions);
 
 //            Average kWh per socket
-            double kWhPerSocket = totalKWhCharged / evseList.size();
-            meterReport.setAverageKWhPerSocket(kWhPerSocket);
+        double kWhPerSocket = totalKWhCharged / evseList.size();
+        meterReport.setAverageKWhPerSocket(kWhPerSocket);
 
 //            Average kWh per session
-            double averageKWhPerSession = totalKWhCharged / numberOfChargingSessions;
-            meterReport.setAverageKWhPerSession(averageKWhPerSession);
+        double averageKWhPerSession = totalKWhCharged / numberOfChargingSessions;
+        meterReport.setAverageKWhPerSession(averageKWhPerSession);
 
 //            Calculate kWh per day per socket
-            double kWhPerDayPerSocket = calculateKWhPerDayPerSocket(location);
-            meterReport.setAverageKWhPerDayPerSocket(kWhPerDayPerSocket);
+        double kWhPerDayPerSocket = calculateKWhPerDayPerSocket(location);
+        meterReport.setAverageKWhPerDayPerSocket(kWhPerDayPerSocket);
 
         return meterReport;
     }

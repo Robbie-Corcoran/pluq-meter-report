@@ -30,13 +30,13 @@ public class MeterValueController {
     }
 
     @PostMapping
-    public MeterValue createMeterValue(@RequestBody MeterValue meterValue){
+    public MeterValue createMeterValue(@RequestBody MeterValue meterValue) {
         return meterValueService.saveMeterValue(meterValue);
     }
 
     @PostMapping("/list")
-    public List<MeterValue> createMeterValueList(@RequestBody List<MeterValue> meterValueList){
-        return  meterValueService.saveMeterValueList(meterValueList);
+    public List<MeterValue> createMeterValueList(@RequestBody List<MeterValue> meterValueList) {
+        return meterValueService.saveMeterValueList(meterValueList);
     }
 
     @DeleteMapping
@@ -50,9 +50,9 @@ public class MeterValueController {
     }
 
 
-//    Test
+    //    Test
     @GetMapping("/test")
-    public List<MeterValue> test(String uid){
+    public List<MeterValue> test(String uid) {
         return meterValueService.getMeterValuesByPhysicalReference(uid);
     }
 }
