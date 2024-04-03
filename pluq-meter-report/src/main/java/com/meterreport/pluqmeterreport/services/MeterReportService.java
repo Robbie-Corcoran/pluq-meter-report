@@ -68,7 +68,7 @@ public class MeterReportService {
         for (Evse evse : evseList) {
             List<MeterValue> meterValues = meterValueService.getMeterValuesByPhysicalReference(evse.getUid());
             for (MeterValue meterValue : meterValues) {
-                totalKwhCharged += meterValue.getMeterValue();
+                totalKwhCharged += Math.round(meterValue.getMeterValue());
             }
         }
 
