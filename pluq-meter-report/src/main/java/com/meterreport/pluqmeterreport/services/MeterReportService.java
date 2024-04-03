@@ -9,7 +9,13 @@ import org.springframework.stereotype.Service;
 
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class MeterReportService {
@@ -61,7 +67,7 @@ public class MeterReportService {
         meterReport.setAverageKWhPerSession(Double.parseDouble(df.format(averageKWhPerSession)));
 
 //            Calculate kWh per day per socket
-        double kWhPerDayPerSocket = calculateKWhPerDayPerSocket(location);
+        double kWhPerDayPerSocket = calculateKWhPerDayPerSocket(evseList);
         meterReport.setAverageKWhPerDayPerSocket(kWhPerDayPerSocket);
 
         return meterReport;
@@ -72,7 +78,7 @@ public class MeterReportService {
         String previousUid = null;
 
         for (Evse evse : evseList) {
-            if (previousUid == null || !previousUid.equals(evse.getUid().substring(0, evse.getUid().length() - 1))) {
+            if (previousUid == null || !previousUid.equals(evse.getUid().substring(0, evse.getUid().length() - 2))) {
 
                 List<MeterValue> meterValues = meterValueService.getMeterValuesByPhysicalReference(evse.getUid());
                 double evseTotalKwhCharged = 0;
@@ -98,8 +104,40 @@ public class MeterReportService {
         return numberOfChargingSessions;
     }
 
-    private double calculateKWhPerDayPerSocket(Location location) {
-        return 0;
+    private double calculateKWhPerDayPerSocket(List<Evse> evseList) {
+        Map<String, List<MeterValue>> meterValuesByDay = groupMeterValuesByDay(evseList);
+        double totalKwhChargedPerDayPerSocket = 0;
+        int numberOfDays = meterValuesByDay.size();
+
+        for (List<MeterValue> meterValues : meterValuesByDay.values()) {
+            double dailyTotalKwh = 0;
+            for (MeterValue meterValue : meterValues) {
+                dailyTotalKwh = meterValue.getMeterValue();
+            }
+            totalKwhChargedPerDayPerSocket += dailyTotalKwh;
+        }
+
+        return (totalKwhChargedPerDayPerSocket / evseList.size()) / numberOfDays;
+    }
+
+    private Map<String, List<MeterValue>> groupMeterValuesByDay(List<Evse> evseList) {
+        DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
+        Map<String, List<MeterValue>> meterValuesByDay = new HashMap<>();
+
+        for (Evse evse : evseList) {
+            List<MeterValue> meterValues = meterValueService.getMeterValuesByPhysicalReference(evse.getUid());
+            Map<String, List<MeterValue>> groupedByDay = meterValues.stream()
+                    .collect(Collectors.groupingBy(meterValue -> {
+                        LocalDate date = LocalDate.parse(meterValue.getDate(), formatter);
+                        return date.toString();
+                    }));
+
+            for (Map.Entry<String, List<MeterValue>> entry : groupedByDay.entrySet()) {
+                meterValuesByDay.computeIfAbsent(entry.getKey(), k -> new ArrayList<>()).addAll(entry.getValue());
+            }
+        }
+
+        return meterValuesByDay;
     }
 
 }
