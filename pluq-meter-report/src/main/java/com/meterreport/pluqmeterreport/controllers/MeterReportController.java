@@ -19,7 +19,7 @@ public class MeterReportController {
     }
 
     @GetMapping
-    public MeterReport generateMeterReportByLocationId(@RequestParam String locationId){
+    public MeterReport generateMeterReportByLocationId(@RequestParam String locationId) {
         return meterReportService.generateMeterReportByLocationId(locationId);
     }
 }
