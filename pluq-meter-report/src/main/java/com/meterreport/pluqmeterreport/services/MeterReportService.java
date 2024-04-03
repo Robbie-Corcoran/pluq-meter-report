@@ -80,7 +80,7 @@ public class MeterReportService {
 
 //            Calculate kWh per day per socket
         double kWhPerDayPerSocket = calculateKWhPerDayPerSocket(evseList);
-        meterReport.setAverageKWhPerDayPerSocket(kWhPerDayPerSocket);
+        meterReport.setAverageKWhPerDayPerSocket(Double.parseDouble(df.format(kWhPerDayPerSocket)));
 
         return meterReport;
     }
