@@ -1,4 +1,4 @@
-package com.meterreport.pluqmeterreport.errors.customErrors;
+package com.meterreport.pluqmeterreport.errors.customErrors.location;
 
 public class LocationAlreadyExistsException extends RuntimeException {
     public LocationAlreadyExistsException(String message) {

@@ -1,4 +1,4 @@
-package com.meterreport.pluqmeterreport.errors.customErrors;
+package com.meterreport.pluqmeterreport.errors.customErrors.location;
 
 public class LocationNotFoundException extends RuntimeException {
     public LocationNotFoundException(String message) {

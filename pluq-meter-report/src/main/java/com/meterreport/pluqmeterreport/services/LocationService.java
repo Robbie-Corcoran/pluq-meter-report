@@ -1,7 +1,7 @@
 package com.meterreport.pluqmeterreport.services;
 
-import com.meterreport.pluqmeterreport.errors.customErrors.LocationAlreadyExistsException;
-import com.meterreport.pluqmeterreport.errors.customErrors.LocationNotFoundException;
+import com.meterreport.pluqmeterreport.errors.customErrors.location.LocationAlreadyExistsException;
+import com.meterreport.pluqmeterreport.errors.customErrors.location.LocationNotFoundException;
 import com.meterreport.pluqmeterreport.models.location.Location;
 import com.meterreport.pluqmeterreport.repos.LocationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
