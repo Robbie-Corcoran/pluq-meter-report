@@ -3,6 +3,7 @@ package com.meterreport.pluqmeterreport.controllers;
 import com.meterreport.pluqmeterreport.models.EnergyPrice;
 import com.meterreport.pluqmeterreport.services.EnergyPriceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,34 +21,37 @@ public class EnergyPricesController {
     }
 
     @GetMapping("/all")
-    public List<EnergyPrice> getAllEnergyPrices() {
-        return energyPriceService.getAllEnergyPrices();
+    public ResponseEntity<List<EnergyPrice>> getAllEnergyPrices() {
+        return ResponseEntity.ok(energyPriceService.getAllEnergyPrices());
     }
 
     @GetMapping
-    public Optional<EnergyPrice> getEnergyPriceById(@RequestParam String energyPriceId) {
-        return energyPriceService.getEnergyPriceById(energyPriceId);
+    public ResponseEntity<Optional<EnergyPrice>> getEnergyPriceById(@RequestParam String energyPriceId) {
+        return ResponseEntity.ok(energyPriceService.getEnergyPriceById(energyPriceId));
     }
 
 
     @PostMapping
-    public EnergyPrice createEnergyPrice(@RequestBody EnergyPrice energyPrice) {
-        return energyPriceService.saveEnergyPrice(energyPrice);
+    public ResponseEntity<EnergyPrice> createEnergyPrice(@RequestBody EnergyPrice energyPrice) {
+        return ResponseEntity.ok(energyPriceService.saveEnergyPrice(energyPrice));
     }
 
     @PostMapping("/list")
-    public List<EnergyPrice> createEnergyPriceList(@RequestBody List<EnergyPrice> energyPrices) {
-        return energyPriceService.saveEnergyPrices(energyPrices);
+    public ResponseEntity<List<EnergyPrice>> createEnergyPriceList(@RequestBody List<EnergyPrice> energyPrices) {
+        return ResponseEntity.ok(energyPriceService.saveEnergyPrices(energyPrices));
     }
 
     @DeleteMapping
-    public void deleteEnergyPrice(@RequestParam String energyPriceId) {
+    public ResponseEntity<String> deleteEnergyPrice(@RequestParam String energyPriceId) {
         energyPriceService.deleteEnergyPrice(energyPriceId);
+        return ResponseEntity.ok("Energy price deleted successfully");
     }
 
     @DeleteMapping("/all")
-    public void deleteAllEnergyPrice() {
+    public ResponseEntity<String> deleteAllEnergyPrice() {
         energyPriceService.deleteEnergyPrices();
+        return ResponseEntity.ok("All energy prices deleted successfully");
+
     }
 
 }
