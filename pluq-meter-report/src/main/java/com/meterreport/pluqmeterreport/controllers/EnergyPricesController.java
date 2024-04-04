@@ -25,18 +25,18 @@ public class EnergyPricesController {
     }
 
     @GetMapping
-    public Optional<EnergyPrice> getEnergyPriceById(@RequestParam String energyPriceId){
+    public Optional<EnergyPrice> getEnergyPriceById(@RequestParam String energyPriceId) {
         return energyPriceService.getEnergyPriceById(energyPriceId);
     }
 
 
     @PostMapping
-    public EnergyPrice createEnergyPrice(@RequestBody EnergyPrice energyPrice){
+    public EnergyPrice createEnergyPrice(@RequestBody EnergyPrice energyPrice) {
         return energyPriceService.saveEnergyPrice(energyPrice);
     }
 
-    @PostMapping ("/list")
-    public List<EnergyPrice> createEnergyPriceList(@RequestBody List<EnergyPrice> energyPrices){
+    @PostMapping("/list")
+    public List<EnergyPrice> createEnergyPriceList(@RequestBody List<EnergyPrice> energyPrices) {
         return energyPriceService.saveEnergyPrices(energyPrices);
     }
 
