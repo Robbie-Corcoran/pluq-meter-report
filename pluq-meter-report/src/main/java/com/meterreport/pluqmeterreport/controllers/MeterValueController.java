@@ -3,6 +3,7 @@ package com.meterreport.pluqmeterreport.controllers;
 import com.meterreport.pluqmeterreport.models.MeterValue;
 import com.meterreport.pluqmeterreport.services.MeterValueService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,12 +33,12 @@ public class MeterValueController {
 
     @PostMapping
     public ResponseEntity<MeterValue> createMeterValue(@RequestBody MeterValue meterValue) {
-        return ResponseEntity.ok(meterValueService.saveMeterValue(meterValue));
+        return ResponseEntity.status(HttpStatus.CREATED).body(meterValueService.saveMeterValue(meterValue));
     }
 
     @PostMapping("/list")
     public ResponseEntity<List<MeterValue>> createMeterValueList(@RequestBody List<MeterValue> meterValueList) {
-        return ResponseEntity.ok(meterValueService.saveMeterValueList(meterValueList));
+        return ResponseEntity.status(HttpStatus.CREATED).body(meterValueService.saveMeterValueList(meterValueList));
     }
 
     @DeleteMapping

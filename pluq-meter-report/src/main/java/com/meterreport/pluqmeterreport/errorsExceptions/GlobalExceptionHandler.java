@@ -1,9 +1,9 @@
-package com.meterreport.pluqmeterreport.errors;
+package com.meterreport.pluqmeterreport.errorsExceptions;
 
-import com.meterreport.pluqmeterreport.errors.customErrors.location.LocationAlreadyExistsException;
-import com.meterreport.pluqmeterreport.errors.customErrors.location.LocationNotFoundException;
-import com.meterreport.pluqmeterreport.errors.customErrors.meterValue.MeterValueAlreadyExistsException;
-import com.meterreport.pluqmeterreport.errors.customErrors.meterValue.MeterValueNotFoundException;
+import com.meterreport.pluqmeterreport.errorsExceptions.customExceptions.location.LocationAlreadyExistsException;
+import com.meterreport.pluqmeterreport.errorsExceptions.customExceptions.location.LocationNotFoundException;
+import com.meterreport.pluqmeterreport.errorsExceptions.customExceptions.meterValue.MeterValueAlreadyExistsException;
+import com.meterreport.pluqmeterreport.errorsExceptions.customExceptions.meterValue.MeterValueNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

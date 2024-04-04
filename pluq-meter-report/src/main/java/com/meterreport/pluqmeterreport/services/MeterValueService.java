@@ -1,9 +1,9 @@
 package com.meterreport.pluqmeterreport.services;
 
 
-import com.meterreport.pluqmeterreport.errors.customErrors.location.LocationNotFoundException;
-import com.meterreport.pluqmeterreport.errors.customErrors.meterValue.MeterValueAlreadyExistsException;
-import com.meterreport.pluqmeterreport.errors.customErrors.meterValue.MeterValueNotFoundException;
+import com.meterreport.pluqmeterreport.errorsExceptions.customExceptions.location.LocationNotFoundException;
+import com.meterreport.pluqmeterreport.errorsExceptions.customExceptions.meterValue.MeterValueAlreadyExistsException;
+import com.meterreport.pluqmeterreport.errorsExceptions.customExceptions.meterValue.MeterValueNotFoundException;
 import com.meterreport.pluqmeterreport.models.MeterValue;
 import com.meterreport.pluqmeterreport.repos.MeterValueRepository;
 import org.springframework.beans.factory.annotation.Autowired;

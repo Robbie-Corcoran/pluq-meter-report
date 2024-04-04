@@ -3,6 +3,7 @@ package com.meterreport.pluqmeterreport.controllers;
 import com.meterreport.pluqmeterreport.models.EnergyPrice;
 import com.meterreport.pluqmeterreport.services.EnergyPriceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,12 +34,12 @@ public class EnergyPricesController {
 
     @PostMapping
     public ResponseEntity<EnergyPrice> createEnergyPrice(@RequestBody EnergyPrice energyPrice) {
-        return ResponseEntity.ok(energyPriceService.saveEnergyPrice(energyPrice));
+        return ResponseEntity.status(HttpStatus.CREATED).body(energyPriceService.saveEnergyPrice(energyPrice));
     }
 
     @PostMapping("/list")
     public ResponseEntity<List<EnergyPrice>> createEnergyPriceList(@RequestBody List<EnergyPrice> energyPrices) {
-        return ResponseEntity.ok(energyPriceService.saveEnergyPrices(energyPrices));
+        return ResponseEntity.status(HttpStatus.CREATED).body(energyPriceService.saveEnergyPrices(energyPrices));
     }
 
     @DeleteMapping
