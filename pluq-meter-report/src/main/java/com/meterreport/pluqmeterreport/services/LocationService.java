@@ -23,7 +23,7 @@ public class LocationService {
     public Location getLocationById(String locationId) {
         Location location = locationRepository.getLocationById(locationId);
 
-        if(Objects.isNull(location)) {
+        if (Objects.isNull(location)) {
             throw new LocationNotFoundException("Location not found by locationId: " + locationId);
         }
 
@@ -49,7 +49,7 @@ public class LocationService {
     }
 
     public List<Location> saveLocationsList(List<Location> locationsList) {
-        for(Location location : locationsList) {
+        for (Location location : locationsList) {
             if (locationRepository.findById(location.getId()).isPresent()) {
                 throw new LocationAlreadyExistsException("Location already exists with id: " + location.getId());
             }

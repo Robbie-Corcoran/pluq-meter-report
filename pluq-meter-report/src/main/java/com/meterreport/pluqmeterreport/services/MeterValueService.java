@@ -26,7 +26,7 @@ public class MeterValueService {
     public Optional<MeterValue> getMeterValueById(String meterValueId) {
         Optional<MeterValue> meterValue = meterValueRepository.findById(meterValueId);
 
-        if(meterValue.isEmpty()){
+        if (meterValue.isEmpty()) {
             throw new MeterValueNotFoundException("MeterValue not found by meterValueId: " + meterValueId);
         }
 
@@ -36,14 +36,14 @@ public class MeterValueService {
     public List<MeterValue> getAllMeterValues() {
         List<MeterValue> meterValueList = meterValueRepository.findAll();
 
-        if(meterValueList.isEmpty()) {
+        if (meterValueList.isEmpty()) {
             throw new MeterValueNotFoundException("Could not find any saved meterValues.");
         }
         return meterValueList;
     }
 
     public MeterValue saveMeterValue(MeterValue meterValue) {
-        if(meterValueRepository.findById(meterValue.getTransactionId()).isPresent()) {
+        if (meterValueRepository.findById(meterValue.getTransactionId()).isPresent()) {
             throw new MeterValueAlreadyExistsException("MeterValue already exists with id: " + meterValue.getTransactionId());
         }
 
@@ -51,8 +51,8 @@ public class MeterValueService {
     }
 
     public List<MeterValue> saveMeterValueList(List<MeterValue> meterValueList) {
-        for(MeterValue meterValue : meterValueList) {
-            if(meterValueRepository.findById(meterValue.getTransactionId()).isPresent()) {
+        for (MeterValue meterValue : meterValueList) {
+            if (meterValueRepository.findById(meterValue.getTransactionId()).isPresent()) {
                 throw new MeterValueAlreadyExistsException("MeterValue already exists with id: " + meterValue.getTransactionId());
             }
         }

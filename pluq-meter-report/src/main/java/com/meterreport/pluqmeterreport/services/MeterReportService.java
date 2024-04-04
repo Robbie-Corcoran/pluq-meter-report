@@ -1,9 +1,9 @@
 package com.meterreport.pluqmeterreport.services;
 
+import com.meterreport.pluqmeterreport.models.MeterReport;
 import com.meterreport.pluqmeterreport.models.MeterValue;
 import com.meterreport.pluqmeterreport.models.location.Evse;
 import com.meterreport.pluqmeterreport.models.location.Location;
-import com.meterreport.pluqmeterreport.models.report.MeterReport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,13 +22,11 @@ public class MeterReportService {
 
     private final LocationService locationService;
     private final MeterValueService meterValueService;
-    private final EnergyPriceService energyPriceService;
 
     @Autowired
-    public MeterReportService(LocationService locationService, MeterValueService meterValueService, EnergyPriceService energyPriceService) {
+    public MeterReportService(LocationService locationService, MeterValueService meterValueService) {
         this.locationService = locationService;
         this.meterValueService = meterValueService;
-        this.energyPriceService = energyPriceService;
     }
 
 
@@ -46,42 +44,43 @@ public class MeterReportService {
 
     public MeterReport generateMeterReportByLocationId(String locationId) {
         MeterReport meterReport = new MeterReport();
-        DecimalFormat df = new DecimalFormat("#.##");
-        df.setRoundingMode(RoundingMode.DOWN);
-
         Location location = locationService.getLocationById(locationId);
         List<Evse> evseList = location.getEvses();
 
-//            Name
+        setLocationDetails(meterReport, location);
+        calculateAndSetMetrics(meterReport, evseList);
+
+        meterReport.setReportComplete(true);
+        if (meterReport.getLocationName().isEmpty() || meterReport.getLocationAddress().isEmpty() || meterReport.getNumberOfChargingSessions() == 0 || meterReport.getTotalKWhCharged() == 0) {
+            meterReport.setReportComplete(false);
+        }
+
+        return meterReport;
+    }
+
+    private void setLocationDetails(MeterReport meterReport, Location location) {
         meterReport.setLocationName(location.getName());
-
-//            Address
         meterReport.setLocationAddress(location.getAddress() + ", " + location.getCity() + ", " + location.getCountry() + ".");
+    }
 
-//            Number of charging sockets
-        meterReport.setNumberOfChargingSockets(evseList.size());
+    private void calculateAndSetMetrics(MeterReport meterReport, List<Evse> evseList) {
+        DecimalFormat df = new DecimalFormat("#.##");
+        df.setRoundingMode(RoundingMode.DOWN);
 
-//            Total kWh charged
         double totalKWhCharged = calculateTotalKWhCharged(evseList);
         meterReport.setTotalKWhCharged(Double.parseDouble(df.format(totalKWhCharged)));
 
-//            Number of charging sessions
         int numberOfChargingSessions = calculateNumberOfChargingSessions(evseList);
         meterReport.setNumberOfChargingSessions(numberOfChargingSessions);
 
-//            Average kWh per socket
         double kWhPerSocket = totalKWhCharged / evseList.size();
         meterReport.setAverageKWhPerSocket(Double.parseDouble(df.format(kWhPerSocket)));
 
-//            Average kWh per session
         double averageKWhPerSession = totalKWhCharged / numberOfChargingSessions;
         meterReport.setAverageKWhPerSession(Double.parseDouble(df.format(averageKWhPerSession)));
 
-//            Calculate kWh per day per socket
         double kWhPerDayPerSocket = calculateKWhPerDayPerSocket(evseList);
         meterReport.setAverageKWhPerDayPerSocket(Double.parseDouble(df.format(kWhPerDayPerSocket)));
-
-        return meterReport;
     }
 
     private double calculateTotalKWhCharged(List<Evse> evseList) {
