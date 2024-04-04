@@ -83,7 +83,7 @@ public class MeterReportService {
         meterReport.setAverageKWhPerDayPerSocket(Double.parseDouble(df.format(kWhPerDayPerSocket)));
     }
 
-    private double calculateTotalKWhCharged(List<Evse> evseList) {
+    public double calculateTotalKWhCharged(List<Evse> evseList) {
         double locationTotalKwhCharged = 0;
         String previousUid = null;
 
@@ -105,7 +105,7 @@ public class MeterReportService {
         return locationTotalKwhCharged;
     }
 
-    private int calculateNumberOfChargingSessions(List<Evse> evseList) {
+    public int calculateNumberOfChargingSessions(List<Evse> evseList) {
         int numberOfChargingSessions = 0;
         for (Evse evse : evseList) {
             List<MeterValue> meterValues = meterValueService.getMeterValuesByPhysicalReference(evse.getUid());
@@ -114,7 +114,7 @@ public class MeterReportService {
         return numberOfChargingSessions;
     }
 
-    private double calculateKWhPerDayPerSocket(List<Evse> evseList) {
+    public double calculateKWhPerDayPerSocket(List<Evse> evseList) {
         Map<String, List<MeterValue>> meterValuesByDay = groupMeterValuesByDay(evseList);
         double totalKwhChargedPerDayPerSocket = 0;
         int numberOfDays = meterValuesByDay.size();
@@ -131,7 +131,7 @@ public class MeterReportService {
         return (totalKwhChargedPerDayPerSocket / numberOfSockets) / numberOfDays;
     }
 
-    private Map<String, List<MeterValue>> groupMeterValuesByDay(List<Evse> evseList) {
+    public Map<String, List<MeterValue>> groupMeterValuesByDay(List<Evse> evseList) {
         DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
         Map<String, List<MeterValue>> meterValuesByDay = new HashMap<>();
 
