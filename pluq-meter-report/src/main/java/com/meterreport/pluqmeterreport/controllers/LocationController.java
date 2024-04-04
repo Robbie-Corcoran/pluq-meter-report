@@ -3,6 +3,7 @@ package com.meterreport.pluqmeterreport.controllers;
 import com.meterreport.pluqmeterreport.models.location.Location;
 import com.meterreport.pluqmeterreport.services.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,12 +31,12 @@ public class LocationController {
 
     @PostMapping
     public ResponseEntity<Location> createLocation(@RequestBody Location location) {
-        return ResponseEntity.ok(locationService.saveLocation(location));
+        return ResponseEntity.status(HttpStatus.CREATED).body(locationService.saveLocation(location));
     }
 
     @PostMapping("/list")
     public ResponseEntity<List<Location>> createLocationsList(@RequestBody List<Location> locationsList) {
-        return ResponseEntity.ok(locationService.saveLocationsList(locationsList));
+        return ResponseEntity.status(HttpStatus.CREATED).body(locationService.saveLocationsList(locationsList));
     }
 
     @DeleteMapping

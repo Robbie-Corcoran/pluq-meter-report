@@ -1,4 +1,4 @@
-package com.meterreport.pluqmeterreport.errors.customErrors.meterValue;
+package com.meterreport.pluqmeterreport.errorsExceptions.customExceptions.meterValue;
 
 public class MeterValueAlreadyExistsException extends RuntimeException {
     public MeterValueAlreadyExistsException(String message) {
