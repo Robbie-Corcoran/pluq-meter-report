@@ -31,7 +31,6 @@ public class MeterReportService {
         this.energyPriceService = energyPriceService;
     }
 
-//    TODO: Implement report generation logic
 
     public List<MeterReport> generateMeterReportForAllLocations() {
         List<MeterReport> meterReportList = new ArrayList<>();
@@ -120,6 +119,7 @@ public class MeterReportService {
         Map<String, List<MeterValue>> meterValuesByDay = groupMeterValuesByDay(evseList);
         double totalKwhChargedPerDayPerSocket = 0;
         int numberOfDays = meterValuesByDay.size();
+        int numberOfSockets = evseList.size();
 
         for (List<MeterValue> meterValues : meterValuesByDay.values()) {
             double dailyTotalKwh = 0;
@@ -129,7 +129,7 @@ public class MeterReportService {
             totalKwhChargedPerDayPerSocket += dailyTotalKwh;
         }
 
-        return (totalKwhChargedPerDayPerSocket / evseList.size()) / numberOfDays;
+        return (totalKwhChargedPerDayPerSocket / numberOfSockets) / numberOfDays;
     }
 
     private Map<String, List<MeterValue>> groupMeterValuesByDay(List<Evse> evseList) {
