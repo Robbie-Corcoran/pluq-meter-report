@@ -1,5 +1,7 @@
 package com.meterreport.pluqmeterreport.services;
 
+import com.meterreport.pluqmeterreport.errors.customErrors.location.LocationAlreadyExistsException;
+import com.meterreport.pluqmeterreport.errors.customErrors.location.LocationNotFoundException;
 import com.meterreport.pluqmeterreport.errors.customErrors.LocationAlreadyExistsException;
 import com.meterreport.pluqmeterreport.errors.customErrors.LocationNotFoundException;
 import com.meterreport.pluqmeterreport.models.location.Location;
@@ -8,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class LocationService {
@@ -18,6 +21,7 @@ public class LocationService {
     public LocationService(LocationRepository locationRepository) {
         this.locationRepository = locationRepository;
     }
+
 
     public Optional<Location> getLocationById(String locationId) throws LocationNotFoundException {
         Optional<Location> location = locationRepository.findById(locationId);
@@ -46,8 +50,12 @@ public class LocationService {
         return locationRepository.save(location);
     }
 
-    //    TODO: Finish exception handling for this method.
     public List<Location> saveLocationsList(List<Location> locationsList) {
+        for (Location location : locationsList) {
+            if (locationRepository.findById(location.getId()).isPresent()) {
+                throw new LocationAlreadyExistsException("Location already exists with id: " + location.getId());
+            }
+        }
         return locationRepository.saveAll(locationsList);
     }
 
@@ -65,7 +73,5 @@ public class LocationService {
         locationRepository.deleteAll();
     }
 
-    public Location getLocationById(String locationId) {
-        return locationRepository.getLocationById(locationId);
-    }
+
 }

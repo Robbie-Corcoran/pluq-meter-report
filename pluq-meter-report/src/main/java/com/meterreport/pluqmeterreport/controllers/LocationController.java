@@ -18,15 +18,15 @@ public class LocationController {
         this.locationService = locationService;
     }
 
-
-    @GetMapping
-    public ResponseEntity<Optional<Location>> getLocationById(@RequestParam String locationId) {
-        return ResponseEntity.ok(locationService.getLocationById(locationId));
-    }
-
     @GetMapping("/all")
     public ResponseEntity<List<Location>> getAllLocations() {
-        return ResponseEntity.of(Optional.ofNullable(locationService.getAllLocations()));
+        return ResponseEntity.ok(locationService.getAllLocations());
+    }
+
+    @GetMapping
+    public ResponseEntity<Location> getLocationById(@RequestParam String locationId) {
+        return ResponseEntity.ok(locationService.getLocationById(locationId));
+
     }
 
     @PostMapping

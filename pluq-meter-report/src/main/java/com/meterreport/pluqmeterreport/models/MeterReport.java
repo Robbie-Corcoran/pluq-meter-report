@@ -1,4 +1,4 @@
-package com.meterreport.pluqmeterreport.models.report;
+package com.meterreport.pluqmeterreport.models;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,4 +17,5 @@ public class MeterReport {
     private double averageKWhPerSocket;
     private double averageKWhPerSession;
     private double averageKWhPerDayPerSocket;
+    private boolean reportComplete;
 }

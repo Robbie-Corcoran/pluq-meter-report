@@ -3,6 +3,7 @@ package com.meterreport.pluqmeterreport.controllers;
 import com.meterreport.pluqmeterreport.models.MeterValue;
 import com.meterreport.pluqmeterreport.services.MeterValueService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,39 +21,34 @@ public class MeterValueController {
     }
 
     @GetMapping
-    public Optional<MeterValue> getMeterValueById(@RequestParam String meterValueId) {
-        return meterValueService.getMeterValueById(meterValueId);
+    public ResponseEntity<Optional<MeterValue>> getMeterValueById(@RequestParam String meterValueId) {
+        return ResponseEntity.ok(meterValueService.getMeterValueById(meterValueId));
     }
 
     @GetMapping("/all")
-    public List<MeterValue> getAllMeterValues() {
-        return meterValueService.getAllMeterValues();
+    public ResponseEntity<List<MeterValue>> getAllMeterValues() {
+        return ResponseEntity.ok(meterValueService.getAllMeterValues());
     }
 
     @PostMapping
-    public MeterValue createMeterValue(@RequestBody MeterValue meterValue) {
-        return meterValueService.saveMeterValue(meterValue);
+    public ResponseEntity<MeterValue> createMeterValue(@RequestBody MeterValue meterValue) {
+        return ResponseEntity.ok(meterValueService.saveMeterValue(meterValue));
     }
 
     @PostMapping("/list")
-    public List<MeterValue> createMeterValueList(@RequestBody List<MeterValue> meterValueList) {
-        return meterValueService.saveMeterValueList(meterValueList);
+    public ResponseEntity<List<MeterValue>> createMeterValueList(@RequestBody List<MeterValue> meterValueList) {
+        return ResponseEntity.ok(meterValueService.saveMeterValueList(meterValueList));
     }
 
     @DeleteMapping
-    public void deleteMeterValue(@RequestParam String meterValueId) {
+    public ResponseEntity<String> deleteMeterValue(@RequestParam String meterValueId) {
         meterValueService.deleteMeterValue(meterValueId);
+        return ResponseEntity.ok("Meter value deleted successfully.");
     }
 
     @DeleteMapping("/all")
-    public void deleteAllMeterValues() {
+    public ResponseEntity<String> deleteAllMeterValues() {
         meterValueService.deleteAllMeterValues();
+        return ResponseEntity.ok("All meter values deleted successfully.");
     }
-
-
-    //    Test
-//    @GetMapping("/test")
-//    public List<MeterValue> test(String uid) {
-//        return meterValueService.getMeterValuesByPhysicalReference(uid);
-//    }
 }
