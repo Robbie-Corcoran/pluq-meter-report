@@ -42,4 +42,8 @@ public class MeterValueService {
     public void deleteAllMeterValues() {
         meterValueRepository.deleteAll();
     }
+
+    public List<MeterValue> getMeterValuesByPhysicalReference(String physicalReference) {
+        return meterValueRepository.findAllByPhysicalReference(physicalReference);
+    }
 }

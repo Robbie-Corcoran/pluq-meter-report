@@ -13,10 +13,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class MeterValue {
 
     @Id
-    private String id;
+    private String transactionId;
     private String date;
     private String dateAdded;
     private String physicalReference;
-    private String transactionId;
     private double meterValue;
 }
