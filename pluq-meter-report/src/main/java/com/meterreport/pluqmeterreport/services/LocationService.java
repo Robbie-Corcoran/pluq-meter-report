@@ -2,6 +2,8 @@ package com.meterreport.pluqmeterreport.services;
 
 import com.meterreport.pluqmeterreport.errors.customErrors.location.LocationAlreadyExistsException;
 import com.meterreport.pluqmeterreport.errors.customErrors.location.LocationNotFoundException;
+import com.meterreport.pluqmeterreport.errors.customErrors.LocationAlreadyExistsException;
+import com.meterreport.pluqmeterreport.errors.customErrors.LocationNotFoundException;
 import com.meterreport.pluqmeterreport.models.location.Location;
 import com.meterreport.pluqmeterreport.repos.LocationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,17 +22,17 @@ public class LocationService {
         this.locationRepository = locationRepository;
     }
 
-    public Location getLocationById(String locationId) {
-        Location location = locationRepository.getLocationById(locationId);
 
-        if (Objects.isNull(location)) {
+    public Optional<Location> getLocationById(String locationId) throws LocationNotFoundException {
+        Optional<Location> location = locationRepository.findById(locationId);
+
+        if (location.isEmpty()) {
             throw new LocationNotFoundException("Location not found by locationId: " + locationId);
         }
-
         return location;
     }
 
-    public List<Location> getAllLocations() {
+    public List<Location> getAllLocations() throws LocationNotFoundException {
         List<Location> locationList = locationRepository.findAll();
 
         if (locationList.isEmpty()) {
@@ -40,7 +42,7 @@ public class LocationService {
         return locationList;
     }
 
-    public Location saveLocation(Location location) {
+    public Location saveLocation(Location location) throws LocationAlreadyExistsException {
         if (locationRepository.findById(location.getId()).isPresent()) {
             throw new LocationAlreadyExistsException("Location already exists with id: " + location.getId());
         }
@@ -57,15 +59,14 @@ public class LocationService {
         return locationRepository.saveAll(locationsList);
     }
 
-    public void delete(String locationId) {
+    public void delete(String locationId) throws LocationNotFoundException {
         if (locationRepository.findById(locationId).isEmpty()) {
             throw new LocationNotFoundException("Location not found by locationId: " + locationId);
         }
-
         locationRepository.deleteById(locationId);
     }
 
-    public void deleteAllLocations() {
+    public void deleteAllLocations() throws LocationNotFoundException {
         if (locationRepository.findAll().isEmpty()) {
             throw new LocationNotFoundException("Could not find any saved locations.");
         }

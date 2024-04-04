@@ -26,6 +26,7 @@ public class LocationController {
     @GetMapping
     public ResponseEntity<Location> getLocationById(@RequestParam String locationId) {
         return ResponseEntity.ok(locationService.getLocationById(locationId));
+
     }
 
     @PostMapping
