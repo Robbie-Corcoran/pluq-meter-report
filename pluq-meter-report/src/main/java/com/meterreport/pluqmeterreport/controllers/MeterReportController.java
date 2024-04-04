@@ -2,6 +2,7 @@ package com.meterreport.pluqmeterreport.controllers;
 
 import com.meterreport.pluqmeterreport.models.MeterReport;
 import com.meterreport.pluqmeterreport.services.MeterReportService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,12 +22,12 @@ public class MeterReportController {
     }
 
     @GetMapping
-    public MeterReport generateMeterReportByLocationId(@RequestParam String locationId) {
-        return meterReportService.generateMeterReportByLocationId(locationId);
+    public ResponseEntity<MeterReport> generateMeterReportByLocationId(@RequestParam String locationId) {
+        return ResponseEntity.ok(meterReportService.generateMeterReportByLocationId(locationId));
     }
 
     @GetMapping("/all")
-    public List<MeterReport> generateMeterReport() {
-        return meterReportService.generateMeterReportForAllLocations();
+    public ResponseEntity<List<MeterReport>> generateMeterReport() {
+        return ResponseEntity.ok(meterReportService.generateMeterReportForAllLocations());
     }
 }
