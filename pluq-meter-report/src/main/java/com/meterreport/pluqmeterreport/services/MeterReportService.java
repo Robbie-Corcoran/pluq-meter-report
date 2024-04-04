@@ -83,7 +83,7 @@ public class MeterReportService {
         meterReport.setAverageKWhPerDayPerSocket(Double.parseDouble(df.format(kWhPerDayPerSocket)));
     }
 
-    private double calculateTotalKWhCharged(List<Evse> evseList) {
+    public double calculateTotalKWhCharged(List<Evse> evseList) {
         double locationTotalKwhCharged = 0;
         String previousUid = null;
 
